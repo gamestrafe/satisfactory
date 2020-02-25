@@ -1,0 +1,12 @@
+# The contents of this file are parsed and made available as
+# via `site.*`. So for example, {{ site.title }} can be used
+# in a template to get the contents of the `title` key.
+title: Satisfactory - GameStrafe
+subtitle: The opensource game network
+github_link: https://github.com/gamestrafe/satisfactory
+url: https://satisfactory.gamestrafe.com
+#google_tag_manager_id: GTM-
+
+# Insert your disqus shortname
+#disqus:
+#    shortname:

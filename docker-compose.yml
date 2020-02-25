@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  # nginx webserver
+  # https://hub.docker.com/_/nginx
+  nginx:
+    image: nginx:1.17.6
+    container_name: 'satisfactory-nginx'
+    volumes:
+      - ./etc/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www
+    ports:
+      - "8083:80"
+    depends_on:
+      - php-fpm
+
+  # PHP-FPM
+  # https://phpdocker.io/
+  php-fpm:
+    build: etc/php-fpm
+    container_name: 'satisfactory-phpfpm'
+    volumes:
+      - ./etc/php-fpm/php.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - .:/var/www

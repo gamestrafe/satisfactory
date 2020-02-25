@@ -1,0 +1,37 @@
+{#
+List of all parts can be found in source/_pages/parts.md
+
+Usage with defaults:
+{{ include('_partials/part.html.twig', {name: 'Iron Ore', count: 123, link: true, size: 'small'}) }}
+Same as
+{{ include('_partials/part.html.twig', {name: 'Iron Ore', count: 123}) }}
+
+Can also leave away the count for just depicting a part as inline text with link:
+{{ include('_partials/part.html.twig', {name: 'Iron Ore'}) }}
+#}
+
+
+
+{% set slug = name|default('ERROR NO NAME GIVEN')|lower|replace({ ' ': "-"}) %}
+{#{% set slug = name %}#}
+
+<span class="single-part">
+
+{% if not link %}
+    <a href="/{{ slug }}.html">
+{% endif %}
+
+    <img src="/images/parts/{{ slug }}.png" alt="{{ name|default('ERROR: NO NAME GIVEN') }}" class="icon-{{ size|default(small) }}">
+
+{% if count %}
+    {{ count|number_format(0, '.', "'") }}
+{% endif %}
+
+{{ name|default('ERROR: NO NAME GIVEN') }}
+
+
+{% if not link %}
+    </a>
+{% endif %}
+
+</span>
